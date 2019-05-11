@@ -1,0 +1,14 @@
+E:\Projects\NC Course\DatingApp\DatingApp\bin\Debug\netcoreapp2.1\DatingApp.deps.json
+E:\Projects\NC Course\DatingApp\DatingApp\bin\Debug\netcoreapp2.1\DatingApp.runtimeconfig.json
+E:\Projects\NC Course\DatingApp\DatingApp\bin\Debug\netcoreapp2.1\DatingApp.runtimeconfig.dev.json
+E:\Projects\NC Course\DatingApp\DatingApp\bin\Debug\netcoreapp2.1\DatingApp.dll
+E:\Projects\NC Course\DatingApp\DatingApp\bin\Debug\netcoreapp2.1\DatingApp.pdb
+E:\Projects\NC Course\DatingApp\DatingApp\obj\Debug\netcoreapp2.1\DatingApp.csprojAssemblyReference.cache
+E:\Projects\NC Course\DatingApp\DatingApp\obj\Debug\netcoreapp2.1\DatingApp.csproj.CoreCompileInputs.cache
+E:\Projects\NC Course\DatingApp\DatingApp\obj\Debug\netcoreapp2.1\DatingApp.RazorAssemblyInfo.cache
+E:\Projects\NC Course\DatingApp\DatingApp\obj\Debug\netcoreapp2.1\DatingApp.RazorAssemblyInfo.cs
+E:\Projects\NC Course\DatingApp\DatingApp\obj\Debug\netcoreapp2.1\DatingApp.AssemblyInfoInputs.cache
+E:\Projects\NC Course\DatingApp\DatingApp\obj\Debug\netcoreapp2.1\DatingApp.AssemblyInfo.cs
+E:\Projects\NC Course\DatingApp\DatingApp\obj\Debug\netcoreapp2.1\DatingApp.RazorTargetAssemblyInfo.cache
+E:\Projects\NC Course\DatingApp\DatingApp\obj\Debug\netcoreapp2.1\DatingApp.dll
+E:\Projects\NC Course\DatingApp\DatingApp\obj\Debug\netcoreapp2.1\DatingApp.pdb
