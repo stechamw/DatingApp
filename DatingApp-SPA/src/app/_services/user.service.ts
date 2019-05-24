@@ -26,6 +26,6 @@ getUsers(): Observable<User[]> /** it will return an observable of type array of
 }
 
 getUser(id): Observable<User> {
-  return this.http.get<User>(this.baseUrl + id);
+  return this.http.get<User>(this.baseUrl + 'users/' + id);
 }
 }

@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190524164835_RenPropertyLookingForTextToLookingFor.cs" />
+    <Compile Remove="Migrations\20190524164835_RenPropertyLookingForTextToLookingFor.Designer.cs" />
+    <Compile Remove="Migrations\20190524171450_RemovedLookingFor.cs" />
+    <Compile Remove="Migrations\20190524171450_RemovedLookingFor.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
