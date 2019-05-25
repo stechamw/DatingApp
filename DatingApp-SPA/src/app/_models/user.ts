@@ -14,6 +14,6 @@ export interface User {
     interests?: string; /** ? question mark makes a property optional known as elvis operator */
     introduction?: string;
     lookingFor?: string;
-    photo?: Photo[]; /** type photo of an array create interface for photos as well */
+    photos?: Photo[]; /** type photo of an array create interface for photos as well */
 
 }
