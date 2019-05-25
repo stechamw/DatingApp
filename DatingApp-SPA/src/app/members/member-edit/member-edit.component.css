@@ -1,0 +1,16 @@
+.img-thumbnail {
+    margin:25px;
+    width: 85%;
+    height: 85%;
+}
+
+.card-body {
+padding: 0 25px;/*we take off top padding but have 25px for left and right*/
+}
+
+.card-footer {
+/*add padding to this 10px top and bottom*/
+padding: 10px 15px;/*15px left and right*/
+background-color: #fff; /*to match the rest of card component*/
+border-top: none;/*to take away shadding of the footer*/
+}
