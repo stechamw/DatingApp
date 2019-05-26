@@ -43,6 +43,7 @@ namespace DatingApp
                     Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();//now it's available for injection to our controller
             services.AddTransient<Seed>();
             services.AddScoped<IAuthRepository, AuthRepository>();//fist is Interface then concrete Implementation
