@@ -35,7 +35,7 @@ namespace DatingApp.API.Controllers
             _mapper = mapper;
            
             // setup cloudinary account
-            Account acc = new Account(
+           Account acc = new Account(
                 _cloudinaryConfig.Value.CloudeName,
                 _cloudinaryConfig.Value.ApiKey,
                 _cloudinaryConfig.Value.ApiSecret
