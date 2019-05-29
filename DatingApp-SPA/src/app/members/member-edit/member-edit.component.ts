@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 })
 export class MemberEditComponent implements OnInit {
   user: User;
+  photoUrl: string;
   @ViewChild('editForm') editForm: NgForm; //editForm is the reference variable declared in member-edit html
   @HostListener('window: beforeunload', ['$event'])
   unLoadNotification($event: any) {
@@ -28,6 +29,7 @@ export class MemberEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data.user; /** assigning data from out route */
     });
+    this.authService.currentPhotoUrl.subscribe(photoUrl=>this.photoUrl = photoUrl)
   }
 
   updateUser() {
@@ -38,5 +40,9 @@ export class MemberEditComponent implements OnInit {
       this.alertify.error(error);
     });
   
+  }
+
+  UpdateMainPhoto(photoUrl) {
+    this.user.photoUrl = photoUrl;
   }
 }

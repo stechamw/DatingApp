@@ -45,7 +45,7 @@ namespace DatingApp.API.Controllers
            
         }
 
-
+        
         [HttpGet("{id}", Name = "GetPhoto")] // id of the photo
         public async Task<IActionResult>GetPhoto(int id)
         {
@@ -96,6 +96,76 @@ namespace DatingApp.API.Controllers
                 return CreatedAtRoute("GetPhoto", new {id = photo.Id}, photoToReturn);
             }
             return BadRequest("Could not add the photo");//if it doesn't work
+        }
+
+        [HttpPost("{id}/setMain")]
+        public async Task<IActionResult> SetMainPhoto(int userId, int id)
+        {
+            // first, we check to c the user is authorized
+
+            // UserId from Token matches userid from route
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized(); // if they don't match
+                                       // we want to check the user is updating one of there own photos
+            var user = await _repo.GetUser(userId);
+
+            if (!user.Photos.Any(p => p.Id == id))
+             //if the id we are passing dooes not match any of the photos in the collection
+                return Unauthorized();
+
+            var photoFromRepo = await _repo.GetPhoto(id);
+            if (photoFromRepo.IsMain)
+                return BadRequest("This is already the main photo");
+
+            var currentMainPhoto = await _repo.GetMainPhotoForUser(userId);
+            currentMainPhoto.IsMain = false;
+            photoFromRepo.IsMain = true;
+
+            if (await _repo.SaveAll())
+                return NoContent();// return no content when saving was successful
+
+            return BadRequest("Could not set photo to main");// else return bad request
+        }
+
+        [HttpDelete("{id}")] // id of the photo
+        public async Task<IActionResult> DeletePhoto(int userId, int id)
+        {
+            // we will not allow users to delete all photos, we will prompt them to upload replacement photo for Main
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized(); // if they don't match
+            // we want to check the user is updating one of there own photos
+            var user = await _repo.GetUser(userId);
+
+            if (!user.Photos.Any(p => p.Id == id))
+                //if the id we are passing dooes not match any of the photos in the collection
+                return Unauthorized();
+
+            var photoFromRepo = await _repo.GetPhoto(id);
+            if (photoFromRepo.IsMain)
+                return BadRequest("You cannot delete your main photo");
+            // we have our photo in cloudinary and we also have a reference record stored in our db
+            // we will need to delete both of this
+            // check if the photoFromRepo has a public id, if not then just delete from db and not from cloud
+            if (photoFromRepo.PublicId != null)
+            {
+                var deleteParams = new DeletionParams(photoFromRepo.PublicId);
+                var result = _cloudinary.Destroy(deleteParams);
+
+                if (result.Result == "ok") // check if deletion has suceeded at cloud 
+                {
+                    _repo.Delete(photoFromRepo);
+                }
+            }
+
+            if (photoFromRepo.PublicId == null)
+            {
+                _repo.Delete(photoFromRepo);
+            }
+            
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Failed to delete the photo");
         }
     }
 }
